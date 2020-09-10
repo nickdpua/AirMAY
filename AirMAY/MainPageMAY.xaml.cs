@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace AirMAY
 {
     /// <summary>
-    /// Interaction logic for Register.xaml
+    /// Interaction logic for MainPageMAY.xaml
     /// </summary>
-    public partial class Register : Window
+    public partial class MainPageMAY : Window
     {
-        public Register()
+        public MainPageMAY()
         {
             InitializeComponent();
         }

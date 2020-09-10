@@ -1,0 +1,53 @@
+﻿<Window x:Class="AirMAY.RegisterPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirMAY"
+        mc:Ignorable="d"
+        Title="RegisterPage" Height="600" Width="400">
+    <Grid Background="LightGray">
+        <Grid Margin="10" Background="LightYellow">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+              
+
+            </Grid.RowDefinitions>
+            <Image Grid.Column="0" Grid.ColumnSpan="3" Margin="7" Source="https://www.biletik.aero/upload/resize_cache/medialibrary/2e0/compressed/2e022c8fbfc1f415e1cace2e38d401dd.jpg"></Image>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="50" HorizontalAlignment="Center" FontStyle="Italic" Foreground="OrangeRed" >Registration</TextBlock>
+            
+            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom">Login:</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom">Password:</TextBlock>
+            <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom">Name:</TextBlock>
+            <TextBlock Grid.Row="7" Grid.Column="1" VerticalAlignment="Bottom">Surname:</TextBlock>
+            <TextBlock Grid.Row="9" Grid.Column="1" VerticalAlignment="Bottom">e-mail:</TextBlock>
+            
+            <TextBox x:Name="LoginTextBoxInRegister" Grid.Row="2" Grid.Column="1" Margin="0,5"></TextBox>
+            <TextBox x:Name="PassTextBoxInRegister" Grid.Row="4" Grid.Column="1" Margin="0,5"></TextBox>
+            <TextBox x:Name="NameTextBoxInRegister" Grid.Row="6" Grid.Column="1" Margin="0,5"></TextBox>
+            <TextBox x:Name="SurnameTextBoxInRegister" Grid.Row="8" Grid.Column="1" Margin="0,5"></TextBox>
+            <TextBox x:Name="EmailTextBoxInRegister" Grid.Row="10" Grid.Column="1" Margin="0,5"></TextBox>
+
+            <Button x:Name="loginButtonInRegister" Grid.Column="1" Grid.Row="11" Margin="10" Background="OrangeRed" Foreground="AliceBlue">ВОЙТИ</Button>
+            
+
+        </Grid>
+    </Grid>
+</Window>
