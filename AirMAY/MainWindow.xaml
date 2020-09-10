@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirMAY"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="400">
+    <Grid Background="LightGray">
+        <Grid Margin="10" Background="LightYellow">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
 
+        </Grid.RowDefinitions>
+            <Image Grid.Column="0" Grid.ColumnSpan="3" Margin="7" Source="https://www.biletik.aero/upload/resize_cache/medialibrary/2e0/compressed/2e022c8fbfc1f415e1cace2e38d401dd.jpg"></Image>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="50" HorizontalAlignment="Center" FontStyle="Italic" Foreground="OrangeRed" >LogInMAY</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom">Login:</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom">Password:</TextBlock>
+            <TextBox x:Name="LoginTextBoxInLogin" Grid.Row="2" Grid.Column="1" Margin="0,15"></TextBox>
+            <TextBox x:Name="PassTextBoxInLogin" Grid.Row="4" Grid.Column="1" Margin="0,15"></TextBox>
+            <Button x:Name="loginButtonInLogin" Grid.Column="1" Grid.Row="5" Margin="20" Background="OrangeRed" Foreground="AliceBlue">ВОЙТИ</Button>
+            <Button x:Name="registerButtonInLogin" Grid.Column="1" Grid.Row="6" Margin="20" Background="OrangeRed" Foreground="AliceBlue">РЕГИСТРАЦИЯ</Button>
+
+        </Grid>
     </Grid>
 </Window>
