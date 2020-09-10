@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirMAY"
         mc:Ignorable="d"
-        Title="MainPageMAY" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainPageMAY" Height="900" Width="1300">
+    <Grid Background="LightGray">
+        <Grid Margin="10" Background="LightYellow">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="1.6*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="1" Grid.Row="4" Margin="3" Source="https://icdn.lenta.ru/images/2020/08/03/21/20200803212243565/square_320_58d3b28c7b2117ab28ddd356fc09f557.jpg"></Image>
+            <Image Grid.Column="3" Grid.Row="4" Margin="3" Source="https://icdn.lenta.ru/images/2020/06/17/15/20200617150340795/square_320_acb67aa2871b6321e41c683adbcb19ba.jpg"></Image>
+            <Image Grid.Column="5" Grid.Row="4" Margin="3" Source="https://icdn.lenta.ru/images/2020/04/15/11/20200415115655713/square_320_2ea2ead11f638c54a6a562cc9584dba7.jpg"></Image>
+            <Image Grid.Column="7" Grid.Row="4" Margin="3" Source="https://images11.popmeh.ru/upload/img_cache/fbf/fbfa9965f9839aa8e21d6b3984b89e5f_ce_1600x1600x736x0_cropped_800x800.jpeg"></Image>
+            <Image Grid.ColumnSpan="8" Grid.RowSpan="2" Grid.Column="4" Source="https://zdtravel.az/content/assets/img/Partners/4491f6e388db4030a82c645e8e69981e.png"></Image>
+            <Border Background="LightGray" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11"></Border>
+            <Button Grid.Column="1" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="2" Margin="5,8" VerticalAlignment="Top">Авиaбилеты</Button>
+            <Button Grid.Column="3" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="2" Margin="5,8" VerticalAlignment="Top">Авиa + Отель</Button>
+            <Button Grid.Column="5" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="2" Margin="5,8" VerticalAlignment="Top">Скидки</Button>
+            <Button Grid.Column="7" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="2" Margin="5,8" VerticalAlignment="Top">Мои билеты</Button>
+            <TextBlock Grid.Row="1" FontSize="21" TextWrapping="Wrap"  Grid.Column="1" Grid.ColumnSpan="3">Производим пассажирские и грузовые воздушные перевозки в крупные города по всему миру по буджетным ценам. На нашем сайте можно найти билеты во многие города и страны всего мира.</TextBlock>
+            <ListBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5"></ListBox>
+            <Button Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="90" MaxWidth="90" Background="Transparent">
+                <Image Source="https://www.damen.com/-/media/New-Corporate-Damen/Images/Services/Services_logo.png?la=ru-RU"></Image>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
