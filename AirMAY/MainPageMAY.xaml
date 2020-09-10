@@ -40,7 +40,7 @@
             <Button Grid.Column="7" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="2" Margin="5,8" VerticalAlignment="Top">Мои билеты</Button>
             <TextBlock Grid.Row="1" FontSize="21" TextWrapping="Wrap"  Grid.Column="1" Grid.ColumnSpan="3">Производим пассажирские и грузовые воздушные перевозки в крупные города по всему миру по буджетным ценам. На нашем сайте можно найти билеты во многие города и страны всего мира.</TextBlock>
             <ListBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5"></ListBox>
-            <Button Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="90" MaxWidth="90" Background="Transparent">
+            <Button Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="130" MaxWidth="150" Background="Transparent" BorderBrush="Transparent">
                 <Image Source="https://www.damen.com/-/media/New-Corporate-Damen/Images/Services/Services_logo.png?la=ru-RU"></Image>
             </Button>
         </Grid>
