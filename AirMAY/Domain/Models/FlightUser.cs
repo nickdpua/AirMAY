@@ -4,10 +4,10 @@ using System.Text;
 
 namespace AirMAY.Domain.Models
 {
-    public class TicketUser
+    public class FlightUser
     {
-        public int TicketId { get; set; }
-        public Ticket Ticket { get; set; }
+        public int FlightId { get; set; }
+        public Flight Flight { get; set; }
 
         public int UserId { get; set; }
         public User User { get; set; }

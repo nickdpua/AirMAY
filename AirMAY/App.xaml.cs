@@ -29,14 +29,14 @@ namespace AirMAY
         private void ConfigurationServiceAsync(IServiceCollection services)
         {
             services.AddTransient(typeof(MainWindow));
-            services.AddTransient(typeof(AdminRepository));
+            services.AddTransient(typeof(AdminRepository));       
+            services.AddTransient(typeof(FlightRepository));
+            services.AddTransient(typeof(FlightTimeRepository));
             services.AddTransient(typeof(HotelRepository));
             services.AddTransient(typeof(SityRepository));
-            services.AddTransient(typeof(TicketRepository));
             services.AddTransient(typeof(UserRepository));
 
             services.AddDbContext<AirMAYDataBaseContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AirMayDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
-
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AirMAY.Domain.Models
 {
-    public class Ticket
+    public class Flight
     {
         public int Id { get; set; }
         public decimal Price { get; set; }
@@ -15,10 +15,11 @@ namespace AirMAY.Domain.Models
         public int SecondSityId { get; set; }
         public Sity SecondSity { get; set; }
 
-        public List<TicketUser> TicketUser { get; set; }
-        public Ticket()
+        public List<FlightTime> FlightTimes { get; set; }
+        public List<FlightUser> FlightUser { get; set; }
+        public Flight()
         {
-            TicketUser = new List<TicketUser>();
+            FlightUser = new List<FlightUser>();
         }
     }
 }

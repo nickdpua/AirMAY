@@ -23,11 +23,8 @@ namespace AirMAY.Domain.Repository
 
         public async Task Change(Hotel obj)
         {
-            var hotel = (await Context.Hotels.FirstOrDefaultAsync(x => x.Id == obj.Id));
-            if (hotel != null)
-            {
-                await Context.SaveChangesAsync();
-            }
+            Context.Set<Hotel>().Update(obj);
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IReadOnlyCollection<Hotel>> FindByConditionAsync(Expression<Func<Hotel, bool>> predicat)
@@ -38,6 +35,12 @@ namespace AirMAY.Domain.Repository
         public async Task<IReadOnlyCollection<Hotel>> GetAllAsync()
         {
             return await Context.Hotels.Include(x => x.Sity).ToListAsync();
+        }
+
+        public async Task Remove(Hotel obj)
+        {
+            Context.Remove(await Context.Hotels.FirstAsync(x => x.Id == obj.Id));
+            await Context.SaveChangesAsync();
         }
     }
 }

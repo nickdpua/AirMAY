@@ -23,27 +23,24 @@ namespace AirMAY.Domain.Repository
 
         public async Task Change(User obj)
         {
-            var user = (await Context.Users.FirstOrDefaultAsync(x => x.Id == obj.Id));
-            if (user != null)
-            {
-                user.Name = obj.Name;
-                user.Surname = obj.Surname;
-                user.Login = obj.Login;
-                user.Password = obj.Password;
-                user.Email = obj.Email;
-
-                await Context.SaveChangesAsync();
-            }
+            Context.Set<User>().Update(obj);
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IReadOnlyCollection<User>> FindByConditionAsync(Expression<Func<User, bool>> predicat)
         {
-            return await Context.Users.Where(predicat).ToListAsync();
+            return await Context.Users.Where(predicat).Include(x=>x.FlightUser).ToListAsync();
         }
 
         public async Task<IReadOnlyCollection<User>> GetAllAsync()
         {
-            return await Context.Users.ToListAsync();
+            return await Context.Users.Include(x => x.FlightUser).ToListAsync();
+        }
+
+        public async Task Remove(User obj)
+        {
+            Context.Remove(await Context.Users.FirstAsync(x => x.Id == obj.Id));
+            await Context.SaveChangesAsync();
         }
     }
 }

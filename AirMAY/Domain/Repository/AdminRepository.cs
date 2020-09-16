@@ -14,7 +14,7 @@ namespace AirMAY.Domain.Repository
     {
         private AirMAYDataBaseContext Context { get; }
         public AdminRepository(AirMAYDataBaseContext context) { Context = context; }
-       
+
         public async Task Add(Admin obj)
         {
             await Context.Admins.AddAsync(obj);
@@ -23,17 +23,8 @@ namespace AirMAY.Domain.Repository
 
         public async Task Change(Admin obj)
         {
-            var admin = (await Context.Admins.FirstOrDefaultAsync(x => x.Id == obj.Id));
-            if (admin != null)
-            {
-                admin.Name = obj.Name;
-                admin.Surname = obj.Surname;
-                admin.Login = obj.Login;
-                admin.Password = obj.Password;
-                admin.Email = obj.Email;
-                
-                await Context.SaveChangesAsync();
-            }
+            Context.Set<Admin>().Update(obj);
+            await Context.SaveChangesAsync();           
         }
 
         public async Task<IReadOnlyCollection<Admin>> FindByConditionAsync(Expression<Func<Admin, bool>> predicat)
@@ -44,6 +35,12 @@ namespace AirMAY.Domain.Repository
         public async Task<IReadOnlyCollection<Admin>> GetAllAsync()
         {
             return await Context.Admins.ToListAsync();
+        }
+
+        public async Task Remove(Admin obj)
+        {
+            Context.Remove(await Context.Admins.FirstAsync(x => x.Id == obj.Id));
+            await Context.SaveChangesAsync();
         }
     }
 }

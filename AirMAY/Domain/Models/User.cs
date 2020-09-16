@@ -13,11 +13,11 @@ namespace AirMAY.Domain.Models
         public string Password { get; set; }
         public string Email { get; set; }
 
-        public List<TicketUser> TicketUser { get; set; }
+        public List<FlightUser> FlightUser { get; set; }
 
         public User()
         {
-            TicketUser = new List<TicketUser>();
+            FlightUser = new List<FlightUser>();
         }
     }
 }

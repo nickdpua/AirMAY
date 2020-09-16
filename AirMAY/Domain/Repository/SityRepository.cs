@@ -23,21 +23,26 @@ namespace AirMAY.Domain.Repository
 
         public async Task Change(Sity obj)
         {
-            var sity = (await Context.Sities.FirstOrDefaultAsync(x => x.Id == obj.Id));
-            if (sity != null)
-            {
-                await Context.SaveChangesAsync();
-            }
+            Context.Set<Sity>().Update(obj);
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IReadOnlyCollection<Sity>> FindByConditionAsync(Expression<Func<Sity, bool>> predicat)
         {
-            return await Context.Sities.Where(predicat).Include(x => x.Tickets).ToListAsync();
+            return await Context.Sities.Where(predicat)
+                .Include(x=>x.Hotels)
+                .Include(x => x.Flights).ToListAsync();
         }
 
         public async Task<IReadOnlyCollection<Sity>> GetAllAsync()
         {
-            return await Context.Sities.Include(x => x.Tickets).ToListAsync();
+            return await Context.Sities.Include(x => x.Flights).ToListAsync();
+        }
+
+        public async Task Remove(Sity obj)
+        {
+            Context.Remove(await Context.Sities.FirstAsync(x => x.Id == obj.Id));
+            await Context.SaveChangesAsync();
         }
     }
 }
