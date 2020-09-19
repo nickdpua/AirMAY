@@ -32,12 +32,12 @@ namespace AirMAY.Domain
                 .HasForeignKey(x => x.SityId).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Sity>()
-                .HasMany(x => x.Flights)
+                .HasMany(x => x.FirstSity)
                 .WithOne(x => x.FirstSity)
                 .HasForeignKey(x => x.FirstSityId).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Sity>()
-               .HasMany(x => x.Flights)
+               .HasMany(x => x.SecondSity)
                .WithOne(x => x.SecondSity)
                .HasForeignKey(x => x.SecondSityId).OnDelete(DeleteBehavior.NoAction);
 

@@ -11,11 +11,13 @@ namespace AirMAY.Domain.Models
         public string ZipCode { get; set; }
 
         public List<Hotel> Hotels { get; set; }
-        public List<Flight> Flights { get; set; }
+        public List<Flight> FirstSity { get; set; }
+        public List<Flight> SecondSity { get; set; }
         public Sity()
         {
             Hotels = new List<Hotel>();
-            Flights = new List<Flight>();
+            FirstSity = new List<Flight>();
+            SecondSity = new List<Flight>();
         }
     }
 }
