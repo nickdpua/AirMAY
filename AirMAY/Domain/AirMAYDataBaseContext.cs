@@ -19,18 +19,11 @@ namespace AirMAY.Domain
         public virtual DbSet<Flight> Flights { get; set; }
         public virtual DbSet<FlightTime> FlightTimes { get; set; }
         public virtual DbSet<FlightUser> FlightUsers { get; set; }
-        public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<Sity> Sities { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Entity<Sity>()
-                .HasMany(x => x.Hotels)
-                .WithOne(x => x.Sity)
-                .HasForeignKey(x => x.SityId).OnDelete(DeleteBehavior.NoAction);
-
+        {      
             modelBuilder.Entity<Sity>()
                 .HasMany(x => x.FirstSity)
                 .WithOne(x => x.FirstSity)
