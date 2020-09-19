@@ -10,6 +10,7 @@ using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using AirMAY.Domain;
 using AirMAY.Domain.Repository;
+using AirMAY.Services;
 
 namespace AirMAY
 {
@@ -29,6 +30,7 @@ namespace AirMAY
         private void ConfigurationServiceAsync(IServiceCollection services)
         {
             services.AddTransient(typeof(MainWindow));
+            services.AddTransient(typeof(LoginService));
             services.AddTransient(typeof(AdminRepository));       
             services.AddTransient(typeof(FlightRepository));
             services.AddTransient(typeof(FlightTimeRepository));

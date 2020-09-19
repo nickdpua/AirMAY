@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirMAY.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,24 @@ namespace AirMAY
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly LoginService _loginService;
+        public MainWindow() { }
+        public MainWindow(LoginService loginService)
         {
+            _loginService = loginService;
             InitializeComponent();
+        }
+
+        private async void loginButtonInLogin_Click(object sender, RoutedEventArgs e)
+        {
+            await _loginService.IsLoginInAsync(LoginTextBoxInLogin.Text, PassTextBoxInLogin.Text);
+        }
+
+        private void registerButtonInLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var registerPage = new RegisterPage(_loginService);
+            this.Close();
+            registerPage.Show();
         }
     }
 }

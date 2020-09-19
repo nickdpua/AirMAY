@@ -30,8 +30,8 @@
             <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom">Password:</TextBlock>
             <TextBox x:Name="LoginTextBoxInLogin" Grid.Row="2" Grid.Column="1" Margin="0,15"></TextBox>
             <TextBox x:Name="PassTextBoxInLogin" Grid.Row="4" Grid.Column="1" Margin="0,15"></TextBox>
-            <Button x:Name="loginButtonInLogin" Grid.Column="1" Grid.Row="5" Margin="20" Background="OrangeRed" Foreground="AliceBlue">ВОЙТИ</Button>
-            <Button x:Name="registerButtonInLogin" Grid.Column="1" Grid.Row="6" Margin="20" Background="OrangeRed" Foreground="AliceBlue">РЕГИСТРАЦИЯ</Button>
+            <Button x:Name="loginButtonInLogin" Grid.Column="1" Grid.Row="5" Margin="20" Background="OrangeRed" Foreground="AliceBlue" Click="loginButtonInLogin_Click">ВОЙТИ</Button>
+            <Button x:Name="registerButtonInLogin" Grid.Column="1" Grid.Row="6" Margin="20" Background="OrangeRed" Foreground="AliceBlue" Click="registerButtonInLogin_Click">РЕГИСТРАЦИЯ</Button>
 
         </Grid>
     </Grid>

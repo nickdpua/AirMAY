@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AirMAY.Domain.Models;
+using AirMAY.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,23 @@ namespace AirMAY
     /// </summary>
     public partial class RegisterPage : Window
     {
-        public RegisterPage()
+        private readonly LoginService _loginService;
+        public RegisterPage(LoginService loginService)
         {
+            _loginService = loginService;
             InitializeComponent();
+        }
+
+        private async void loginButtonInRegister_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User();
+            user.Login = LoginTextBoxInRegister.Text;
+            user.Password = PassTextBoxInRegister.Text;
+            user.Name = NameTextBoxInRegister.Text;
+            user.Surname = SurnameTextBoxInRegister.Text;
+            user.Email = EmailTextBoxInRegister.Text;
+
+            await _loginService.RegisterIn(user);
         }
     }
 }
