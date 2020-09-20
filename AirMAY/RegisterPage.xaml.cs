@@ -43,8 +43,8 @@ namespace AirMAY
             else
             {
                 await _loginService.RegisterIn(user);
-                _loginService.User = user; 
-                MainPageMAY mainPageMAY = new MainPageMAY(_flightService, _chatService, _loginService);
+                _loginService.User = user;
+                MainAviaWindow mainPageMAY = new MainAviaWindow(_flightService, _chatService, _loginService);
                 this.Close();
                 mainPageMAY.Show();
             }

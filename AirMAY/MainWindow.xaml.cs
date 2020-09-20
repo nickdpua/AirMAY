@@ -24,7 +24,7 @@ namespace AirMAY
         private readonly LoginService _loginService;
         private readonly FlightService _flightService;
         private readonly ChatService _chatService;
-        public MainWindow() { }
+        public MainWindow() { InitializeComponent(); }
         public MainWindow(LoginService loginService, FlightService flightService, ChatService chatService)
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace AirMAY
             else
             {
                 _loginService.User = await _loginService.GetUser(LoginTextBoxInLogin.Text);
-                MainPageMAY mainPageMAY = new MainPageMAY(_flightService, _chatService, _loginService);
+                MainAviaWindow mainPageMAY = new MainAviaWindow(_flightService, _chatService, _loginService);
                 this.Close();
                 mainPageMAY.Show();
             }

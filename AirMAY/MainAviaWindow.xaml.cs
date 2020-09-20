@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 namespace AirMAY
 {
     /// <summary>
-    /// Interaction logic for MainPageMAY.xaml
+    /// Логика взаимодействия для MainAviaWindow.xaml
     /// </summary>
-    public partial class MainPageMAY : Window
+    public partial class MainAviaWindow : Window
     {
         private readonly FlightService _flightService;
         private readonly ChatService _chatService;
         private readonly LoginService _loginService;
-        public MainPageMAY(FlightService flightService, ChatService chatService, LoginService loginService)
+        public MainAviaWindow(FlightService flightService, ChatService chatService, LoginService loginService)
         {
             InitializeComponent();
 
@@ -66,11 +66,15 @@ namespace AirMAY
                         Price = item.Price,
                         FirstSity = item.FirstSity,
                         SecondSity = item.SecondSity,
-                        FlightTimes =new List<FlightTime>() { times }
+                        FlightTimes = new List<FlightTime>() { times }
                     });
                 }
             }
             mainListBox.ItemsSource = flights;
+
+            _chatService.Start();
+            if (_loginService.User.Login == "Admin")
+                _chatService.SendCommand(new Services.Model.Command() { Nickname = _loginService.User.Login, UserStatus = "Admin" });
         }
 
         private void HistoryClick(object sender, RoutedEventArgs e)
@@ -90,11 +94,5 @@ namespace AirMAY
             else ChatGrid.Visibility = Visibility.Hidden;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            _chatService.Start();
-            if (_loginService.User.Login == "Admin")
-                _chatService.SendCommand(new Services.Model.Command() { Nickname = _loginService.User.Login, UserStatus = "Admin" });
-        }
     }
 }
