@@ -30,13 +30,15 @@ namespace AirMAY.Domain.Repository
         public async Task<IReadOnlyCollection<Sity>> FindByConditionAsync(Expression<Func<Sity, bool>> predicat)
         {
             return await Context.Sities.Where(predicat)
-                .Include(x=>x.Hotels)
-                .Include(x => x.Flights).ToListAsync();
+                .Include(x => x.FirstSity)
+                .Include(x => x.SecondSity).ToListAsync();
         }
 
         public async Task<IReadOnlyCollection<Sity>> GetAllAsync()
         {
-            return await Context.Sities.Include(x => x.Flights).ToListAsync();
+            return await Context.Sities
+                .Include(x => x.FirstSity)
+                .Include(x => x.SecondSity).ToListAsync();
         }
 
         public async Task Remove(Sity obj)
