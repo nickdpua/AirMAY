@@ -32,6 +32,7 @@ namespace AirMAY
             services.AddTransient(typeof(MainWindow));
             services.AddTransient(typeof(LoginService));
             services.AddTransient(typeof(FlightService));
+            services.AddTransient(typeof(ChatService));
 
             services.AddTransient(typeof(AdminRepository));       
             services.AddTransient(typeof(FlightRepository));

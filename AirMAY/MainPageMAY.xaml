@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirMAY"
         mc:Ignorable="d"
-        Title="MainPageMAY" Height="900" Width="1300">
+        Title="MainPageMAY" Height="900" Width="1300" Loaded="Window_Loaded">
     <Grid Background="LightGray">
         <Grid Margin="10" Background="LightYellow">
             <Grid.ColumnDefinitions>
@@ -38,11 +38,26 @@
             <Button Grid.Column="6" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="4" Margin="5,8" VerticalAlignment="Top">Мои билеты</Button>
             <TextBlock Grid.Row="1" FontSize="21" TextWrapping="Wrap"  Grid.Column="1" Grid.ColumnSpan="3">Производим пассажирские и грузовые воздушные перевозки в крупные города по всему миру по буджетным ценам. На нашем сайте можно найти билеты во многие города и страны всего мира.</TextBlock>
             <ListBox Name="mainListBox" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5">
-          
+
             </ListBox>
-            <Button Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="130" MaxWidth="150" Background="Transparent" BorderBrush="Transparent">
+            <Button Click="ChatButton_Click" Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="130" MaxWidth="150" Background="Transparent" BorderBrush="Transparent">
                 <Image Source="https://www.damen.com/-/media/New-Corporate-Damen/Images/Services/Services_logo.png?la=ru-RU"></Image>
             </Button>
+
+            <Grid x:Name="ChatGrid" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Bottom" MaxWidth="400" Height="500" Grid.ColumnSpan= "11" Grid.RowSpan="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="0.1*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <ListView DockPanel.Dock="Top" Grid.Column="1" x:Name="chatListView" Foreground="White" BorderBrush="#FF12063A" BorderThickness="5" Background="#FF0E0E10"/>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button Click="HideChatButton_Click"  VerticalAlignment="Bottom" MinHeight="50" MinWidth="120" BorderBrush="{x:Null}" Background="#FF12063A" Foreground="White" FontSize="16" Content="Скрыть чат" />
+                    <TextBox VerticalAlignment="Bottom" x:Name="massageTextBox" Width="165" Height="50"  TextWrapping="Wrap" MaxLength="1000" BorderBrush="#FF12063A" BorderThickness="5" Background="#FF3A3A3D" Foreground="White"/>
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" MinHeight="50" MinWidth="120" BorderBrush="{x:Null}" Background="#FF12063A" Foreground="White" FontSize="16" Content="Отправить"/>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

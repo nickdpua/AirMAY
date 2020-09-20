@@ -21,12 +21,14 @@ namespace AirMAY
     {
         private readonly LoginService _loginService;
         private readonly FlightService _flightService;
-        public RegisterPage(LoginService loginService, FlightService flightService)
+        private readonly ChatService _chatService;
+        public RegisterPage(LoginService loginService, FlightService flightService, ChatService chatService)
         {
             InitializeComponent();
 
             _loginService = loginService;
             _flightService = flightService;
+            _chatService = chatService;
         }
 
         private async void loginButtonInRegister_Click(object sender, RoutedEventArgs e)
@@ -41,8 +43,8 @@ namespace AirMAY
             else
             {
                 await _loginService.RegisterIn(user);
-
-                MainPageMAY mainPageMAY = new MainPageMAY(_flightService);
+                _loginService.User = user; 
+                MainPageMAY mainPageMAY = new MainPageMAY(_flightService, _chatService, _loginService);
                 this.Close();
                 mainPageMAY.Show();
             }
