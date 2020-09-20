@@ -34,10 +34,6 @@ namespace Server
                 UserName = command.Nickname;
 
                 if (command.UserStatus == "Admin") return true;
-
-                message = UserName + " вошел в чат";
-                // посылаем сообщение о входе в чат всем подключенным пользователям
-                server.BroadcastMessage(command, this.Id);
             }
             catch (Exception e)
             {

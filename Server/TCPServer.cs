@@ -45,7 +45,7 @@ namespace Server
                     ClientObject clientObjectAdmin = new ClientObject(tcpClientAdmin, this);
                     EventStart += clientObjectAdmin.Process;
                     _adminClientObject = clientObjectAdmin;
-                } while (_adminClientObject.StartAdmin());
+                } while (!_adminClientObject.StartAdmin());
 
                 EventStart.Invoke();
 

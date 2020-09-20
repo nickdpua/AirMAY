@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirMAY"
         mc:Ignorable="d"
-        Title="MainAviaWindow" Height="900" Width="1300">
+        Title="MainAviaWindow" Height="900" Width="1300" Loaded="Window_Loaded">
     <Grid Background="LightGray">
         <Grid Margin="10" Background="LightYellow">
             <Grid.ColumnDefinitions>

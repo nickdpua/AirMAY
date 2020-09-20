@@ -53,7 +53,7 @@ namespace AirMAY.Domain.Initializer
             });
             context.SaveChanges();
 
-            context.Admins.Add(new Models.Admin() { Login = "Admin", Password = "12345", Name = "Serega", Surname = "Kurapatkov" });
+            context.Users.Add(new Models.User() { Login = "Admin", Password = "12345", Name = "Serega", Surname = "Kurapatkov" });
             context.SaveChanges();
 
         }
