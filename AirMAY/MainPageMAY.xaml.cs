@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirMAY.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,17 @@ namespace AirMAY
     /// </summary>
     public partial class MainPageMAY : Window
     {
-        public MainPageMAY()
+        private readonly FlightService _flightService;
+        public MainPageMAY(FlightService flightService)
         {
             InitializeComponent();
+
+            _flightService = flightService;
+        }
+
+        private async void AviaButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainListBox.ItemsSource = await _flightService.GetAllFlight();
         }
     }
 }

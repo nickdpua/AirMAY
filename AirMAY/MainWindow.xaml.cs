@@ -22,11 +22,14 @@ namespace AirMAY
     public partial class MainWindow : Window
     {
         private readonly LoginService _loginService;
+        private readonly FlightService _flightService;
         public MainWindow() { }
-        public MainWindow(LoginService loginService)
+        public MainWindow(LoginService loginService, FlightService flightService)
         {
-            _loginService = loginService;
             InitializeComponent();
+
+            _loginService = loginService;
+            _flightService = flightService;
         }
 
         private async void loginButtonInLogin_Click(object sender, RoutedEventArgs e)
@@ -34,7 +37,7 @@ namespace AirMAY
             if (!await _loginService.IsLoginInAsync(LoginTextBoxInLogin.Text, PassTextBoxInLogin.Text)) MessageBox.Show("Неверный логин или пароль");
             else
             {
-                MainPageMAY mainPageMAY = new MainPageMAY();
+                MainPageMAY mainPageMAY = new MainPageMAY(_flightService);
                 this.Close();
                 mainPageMAY.Show();
             }
@@ -42,7 +45,7 @@ namespace AirMAY
 
         private void registerButtonInLogin_Click(object sender, RoutedEventArgs e)
         {
-            var registerPage = new RegisterPage(_loginService);
+            var registerPage = new RegisterPage(_loginService, _flightService);
             this.Close();
             registerPage.Show();
         }

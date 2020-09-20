@@ -10,40 +10,40 @@ using System.Threading.Tasks;
 
 namespace AirMAY.Domain.Repository
 {
-    public class SityRepository : IRepository<Sity>
+    public class CityRepository : IRepository<City>
     {
         private AirMAYDataBaseContext Context { get; }
-        public SityRepository(AirMAYDataBaseContext context) { Context = context; }
+        public CityRepository(AirMAYDataBaseContext context) { Context = context; }
 
-        public async Task Add(Sity obj)
+        public async Task Add(City obj)
         {
-            await Context.Sities.AddAsync(obj);
+            await Context.Cities.AddAsync(obj);
             await Context.SaveChangesAsync();
         }
 
-        public async Task Change(Sity obj)
+        public async Task Change(City obj)
         {
-            Context.Set<Sity>().Update(obj);
+            Context.Set<City>().Update(obj);
             await Context.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyCollection<Sity>> FindByConditionAsync(Expression<Func<Sity, bool>> predicat)
+        public async Task<IReadOnlyCollection<City>> FindByConditionAsync(Expression<Func<City, bool>> predicat)
         {
-            return await Context.Sities.Where(predicat)
+            return await Context.Cities.Where(predicat)
                 .Include(x => x.FirstSity)
                 .Include(x => x.SecondSity).ToListAsync();
         }
 
-        public async Task<IReadOnlyCollection<Sity>> GetAllAsync()
+        public async Task<IReadOnlyCollection<City>> GetAllAsync()
         {
-            return await Context.Sities
+            return await Context.Cities
                 .Include(x => x.FirstSity)
                 .Include(x => x.SecondSity).ToListAsync();
         }
 
-        public async Task Remove(Sity obj)
+        public async Task Remove(City obj)
         {
-            Context.Remove(await Context.Sities.FirstAsync(x => x.Id == obj.Id));
+            Context.Remove(await Context.Cities.FirstAsync(x => x.Id == obj.Id));
             await Context.SaveChangesAsync();
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AirMAY.Domain.Models
 {
-    public class Sity
+    public class City
     {
         public int Id { get; set; }
         public string SityName { get; set; }
@@ -12,7 +12,7 @@ namespace AirMAY.Domain.Models
 
         public List<Flight> FirstSity { get; set; }
         public List<Flight> SecondSity { get; set; }
-        public Sity()
+        public City()
         {
             FirstSity = new List<Flight>();
             SecondSity = new List<Flight>();

@@ -31,10 +31,12 @@ namespace AirMAY
         {
             services.AddTransient(typeof(MainWindow));
             services.AddTransient(typeof(LoginService));
+            services.AddTransient(typeof(FlightService));
+
             services.AddTransient(typeof(AdminRepository));       
             services.AddTransient(typeof(FlightRepository));
             services.AddTransient(typeof(FlightTimeRepository));
-            services.AddTransient(typeof(SityRepository));
+            services.AddTransient(typeof(CityRepository));
             services.AddTransient(typeof(UserRepository));
 
             services.AddDbContext<AirMAYDataBaseContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AirMayDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
