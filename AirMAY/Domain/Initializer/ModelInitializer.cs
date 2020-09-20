@@ -9,7 +9,6 @@ namespace AirMAY.Domain.Initializer
         public static void Initialize(AirMAYDataBaseContext context)
         {
             context.Database.EnsureCreated();
-
         }
     }
 }

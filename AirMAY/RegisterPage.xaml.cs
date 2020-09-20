@@ -34,8 +34,15 @@ namespace AirMAY
             user.Name = NameTextBoxInRegister.Text;
             user.Surname = SurnameTextBoxInRegister.Text;
             user.Email = EmailTextBoxInRegister.Text;
+            if (await _loginService.IsLoginInAsync(user.Login, user.Password)) MessageBox.Show("Такой логин уже существует");
+            else
+            {
+                await _loginService.RegisterIn(user);
 
-            await _loginService.RegisterIn(user);
+                MainPageMAY mainPageMAY = new MainPageMAY();
+                this.Close();
+                mainPageMAY.Show();
+            }
         }
     }
 }

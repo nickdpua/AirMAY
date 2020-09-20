@@ -31,7 +31,13 @@ namespace AirMAY
 
         private async void loginButtonInLogin_Click(object sender, RoutedEventArgs e)
         {
-            await _loginService.IsLoginInAsync(LoginTextBoxInLogin.Text, PassTextBoxInLogin.Text);
+            if (!await _loginService.IsLoginInAsync(LoginTextBoxInLogin.Text, PassTextBoxInLogin.Text)) MessageBox.Show("Неверный логин или пароль");
+            else
+            {
+                MainPageMAY mainPageMAY = new MainPageMAY();
+                this.Close();
+                mainPageMAY.Show();
+            }
         }
 
         private void registerButtonInLogin_Click(object sender, RoutedEventArgs e)
