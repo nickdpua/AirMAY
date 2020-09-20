@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirMAY"
         mc:Ignorable="d"
-        Title="MainPageMAY" Height="900" Width="1300">
+        Title="MainPageMAY" Height="900" Width="1300" Loaded="Window_Loaded">
     <Grid Background="LightGray">
         <Grid Margin="10" Background="LightYellow">
             <Grid.ColumnDefinitions>
@@ -35,11 +35,26 @@
             <Image Grid.ColumnSpan="8" Grid.RowSpan="2" Grid.Column="4" Source="https://zdtravel.az/content/assets/img/Partners/4491f6e388db4030a82c645e8e69981e.png"></Image>
             <Border Background="LightGray" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11"></Border>
             <Button Grid.Column="1"  Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="3" Margin="5,8" VerticalAlignment="Top" Click="AviaButton_Click">Авиaбилеты</Button>
-            <Button Grid.Column="6" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="4" Margin="5,8" VerticalAlignment="Top">Мои билеты</Button>
+            <Button Grid.Column="6" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="4" Margin="5,8" VerticalAlignment="Top" Click="HistoryClick">Мои билеты</Button>
             <TextBlock Grid.Row="1" FontSize="21" TextWrapping="Wrap"  Grid.Column="1" Grid.ColumnSpan="3">Производим пассажирские и грузовые воздушные перевозки в крупные города по всему миру по буджетным ценам. На нашем сайте можно найти билеты во многие города и страны всего мира.</TextBlock>
-            <ListBox Name="mainListBox" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5">
-          
-            </ListBox>
+
+            <ListView Name="mainListBox" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View >
+                    <GridView>
+                        <GridViewColumn Header="Тут должен быть город из которого мы вылетаем" Width="300" DisplayMemberBinding="{Binding FirstSity.SityName}"  />
+                        <GridViewColumn Header="Тут должен быть город в который мы влетаем"  Width="280"  DisplayMemberBinding="{Binding SecondSity.SityName}" />
+                        <GridViewColumn Header="Время отправления" Width="140" DisplayMemberBinding="{Binding FlightTimes[0].TimeOfDispatch, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
+                        <GridViewColumn Header="Примерное время прибытия" Width="180" DisplayMemberBinding="{Binding FlightTimes[0].EstimatedArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
+                        <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding Price, StringFormat=0 USD }"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
             <Button Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="130" MaxWidth="150" Background="Transparent" BorderBrush="Transparent">
                 <Image Source="https://www.damen.com/-/media/New-Corporate-Damen/Images/Services/Services_logo.png?la=ru-RU"></Image>
             </Button>
