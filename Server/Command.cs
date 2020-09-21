@@ -9,6 +9,6 @@ namespace Server
         public string Message { get; set; }
         public string Nickname { get; set; }
         public string UserStatus { get; set; }
-        public int ChatId { get; set; }
+        public string ChatId { get; set; }
     }
 }

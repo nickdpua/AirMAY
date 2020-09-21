@@ -28,10 +28,8 @@ namespace Server
             try
             {
                 Stream = client.GetStream();
-                // получаем имя пользователя
+
                 var command = GetMessage();
-                var message = command.Nickname;
-                UserName = command.Nickname;
 
                 if (command.UserStatus == "Admin") return true;
             }
@@ -54,11 +52,9 @@ namespace Server
                     var message = command.Nickname;
                     UserName = command.Nickname;
 
-                    message = UserName + " вошел в чат";
                     // посылаем сообщение о входе в чат всем подключенным пользователям
                     server.BroadcastMessage(command, this.Id);
-                    Console.WriteLine(message);
-                    Console.WriteLine(command.Nickname + ": " + command.Message);
+                    Console.WriteLine($"Чат между Админом и {command.Nickname} создан");
                     // в бесконечном цикле получаем сообщения от клиента
                     while (true)
                     {

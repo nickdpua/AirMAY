@@ -40,9 +40,11 @@ namespace AirMAY
             else
             {
                 _loginService.User = await _loginService.GetUser(LoginTextBoxInLogin.Text);
-                MainAviaWindow mainPageMAY = new MainAviaWindow(_flightService, _chatService, _loginService);
+                Window window;
+                if (_loginService.User.Login != "Admin") window = new MainAviaWindow(_flightService, _chatService, _loginService);
+                else window = new MainAviaAdminWidow(_flightService, _chatService, _loginService);
                 this.Close();
-                mainPageMAY.Show();
+                window.Show();
             }
         }
 

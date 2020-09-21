@@ -13,12 +13,18 @@ namespace AirMAY.Services
     {
         private TcpClient _tcpClient;
 
+        public List<ChatHistory> ChatHistories { get; set; }
+        public List<string> ChatIdList { get; set; }
+        public string CurrentTag { get; set; }
+
         public delegate Task EventResiveCommand(Command command);
         public event EventResiveCommand CommandReciveEvent;
 
         public ChatService()
         {
             _tcpClient = new TcpClient();
+            ChatIdList = new List<string>();
+            ChatHistories = new List<ChatHistory>();
         }
         public void Start()
         {

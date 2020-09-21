@@ -38,14 +38,21 @@ namespace Server
                 tcpListener.Start();
                 Console.WriteLine("Сервер запущен. Ожидание подключений...");
 
-                do
+                while (true)
                 {
                     TcpClient tcpClientAdmin = tcpListener.AcceptTcpClient();
 
                     ClientObject clientObjectAdmin = new ClientObject(tcpClientAdmin, this);
                     EventStart += clientObjectAdmin.Process;
-                    _adminClientObject = clientObjectAdmin;
-                } while (!_adminClientObject.StartAdmin());
+
+                    if (clientObjectAdmin.StartAdmin())
+                    {
+                        _adminClientObject = clientObjectAdmin;
+                        break;
+                    }
+                    else clients.Add(clientObjectAdmin);
+                }
+
 
                 EventStart.Invoke();
 
@@ -72,7 +79,13 @@ namespace Server
         {
             if (chatClientObjects.FirstOrDefault(x => x.ClientObject.Id == id) is ChatClientObject chatClientObject)
             {
+                message.ChatId = chatClientObject.ChatId;
                 chatClientObject.BroadcastMessage(message, id);
+            }
+            else if (_adminClientObject.Id == id)
+            {
+               // message.ChatId = chatClientObjects.FirstOrDefault(x => x.ChatId == message.ChatId).ChatId;
+                chatClientObjects.FirstOrDefault(x => x.ChatId == message.ChatId).BroadcastMessage(message, id);
             }
             else
             {
