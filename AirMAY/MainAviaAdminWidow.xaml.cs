@@ -151,44 +151,12 @@ namespace AirMAY
         }
         private async void AviaButton_Click(object sender, RoutedEventArgs e)
         {
-            var res = await _flightService.GetAllFlight();
-            List<Flight> flights = new List<Flight>();
-
-            foreach (var item in res)
-            {
-                foreach (var times in item.FlightTimes)
-                {
-                    flights.Add(new Flight()
-                    {
-                        Price = item.Price,
-                        FirstSity = item.FirstSity,
-                        SecondSity = item.SecondSity,
-                        FlightTimes = new List<FlightTime>() { times }
-                    });
-                }
-            }
-            mainListBox.ItemsSource = flights;
+            mainListView.ItemsSource = await _flightService.GetAllFlight();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var res = await _flightService.GetAllFlight();
-            List<Flight> flights = new List<Flight>();
-
-            foreach (var item in res)
-            {
-                foreach (var times in item.FlightTimes)
-                {
-                    flights.Add(new Flight()
-                    {
-                        Price = item.Price,
-                        FirstSity = item.FirstSity,
-                        SecondSity = item.SecondSity,
-                        FlightTimes = new List<FlightTime>() { times }
-                    });
-                }
-            }
-            mainListBox.ItemsSource = flights;
+            mainListView.ItemsSource = await _flightService.GetAllFlight();
 
             _chatService.Start();
             if (_loginService.User.Login == "Admin")

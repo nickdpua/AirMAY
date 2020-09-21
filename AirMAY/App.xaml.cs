@@ -36,7 +36,6 @@ namespace AirMAY
 
             services.AddTransient(typeof(AdminRepository));       
             services.AddTransient(typeof(FlightRepository));
-            services.AddTransient(typeof(FlightTimeRepository));
             services.AddTransient(typeof(CityRepository));
             services.AddTransient(typeof(UserRepository));
 

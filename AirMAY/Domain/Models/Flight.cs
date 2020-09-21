@@ -15,7 +15,9 @@ namespace AirMAY.Domain.Models
         public int SecondSityId { get; set; }
         public City SecondSity { get; set; }
 
-        public List<FlightTime> FlightTimes { get; set; }
+        public DateTime TimeOfDispatch { get; set; }
+        public DateTime EstimatedArrivalTime { get; set; }
+
         public List<FlightUser> FlightUser { get; set; }
         public Flight()
         {

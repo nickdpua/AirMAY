@@ -32,8 +32,7 @@ namespace AirMAY.Domain.Repository
             return await Context.Flights.Where(predicat)
                 .Include(x=>x.FirstSity)
                 .Include(x => x.SecondSity)
-                .Include(x => x.FlightUser)
-                .Include(x => x.FlightTimes).ToListAsync();
+                .Include(x => x.FlightUser).ToListAsync();
         }
 
         public async Task<IReadOnlyCollection<Flight>> GetAllAsync()
@@ -41,8 +40,7 @@ namespace AirMAY.Domain.Repository
             return await Context.Flights
                 .Include(x => x.FirstSity)
                 .Include(x => x.SecondSity)
-                .Include(x => x.FlightUser)
-                .Include(x => x.FlightTimes).ToListAsync();
+                .Include(x => x.FlightUser).ToListAsync();
         }
 
         public async Task Remove(Flight obj)

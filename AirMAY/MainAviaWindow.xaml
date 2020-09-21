@@ -38,22 +38,25 @@
             <Button Grid.Column="6" Height="60" FontSize="30" Foreground="AliceBlue" Background="OrangeRed" Grid.ColumnSpan="4" Margin="5,8" VerticalAlignment="Top" Click="HistoryClick">Мои билеты</Button>
             <TextBlock Grid.Row="1" FontSize="21" TextWrapping="Wrap"  Grid.Column="1" Grid.ColumnSpan="3">Производим пассажирские и грузовые воздушные перевозки в крупные города по всему миру по буджетным ценам. На нашем сайте можно найти билеты во многие города и страны всего мира.</TextBlock>
 
-            <ListView Name="mainListBox" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5" >
+
+            <ListView Name="mainListView" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" Margin="5" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     </Style>
                 </ListView.ItemContainerStyle>
-                <ListView.View >
+                <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Тут должен быть город из которого мы вылетаем" Width="300" DisplayMemberBinding="{Binding FirstSity.SityName}"  />
-                        <GridViewColumn Header="Тут должен быть город в который мы влетаем"  Width="280"  DisplayMemberBinding="{Binding SecondSity.SityName}" />
-                        <GridViewColumn Header="Время отправления" Width="140" DisplayMemberBinding="{Binding FlightTimes[0].TimeOfDispatch, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
-                        <GridViewColumn Header="Примерное время прибытия" Width="180" DisplayMemberBinding="{Binding FlightTimes[0].EstimatedArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
+                        <GridViewColumn Header="" Width="50" DisplayMemberBinding="{Binding Id}"  />
+                        <GridViewColumn Header="Город из которого мы вылетаем" Width="250" DisplayMemberBinding="{Binding FirstSity.SityName}"  />
+                        <GridViewColumn Header="Город в который мы влетаем"  Width="230"  DisplayMemberBinding="{Binding SecondSity.SityName}" />
+                        <GridViewColumn Header="Время отправления" Width="140" DisplayMemberBinding="{Binding TimeOfDispatch, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
+                        <GridViewColumn Header="Примерное время прибытия" Width="180" DisplayMemberBinding="{Binding EstimatedArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
                         <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding Price, StringFormat=0 USD }"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+            <Button Name="addButton"  Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" MinHeight="30" MinWidth="100" Margin="10" BorderBrush="{x:Null}" Background="#FF12063A" Foreground="White" FontSize="16" Click="AddButtonClick">Купить билет</Button>
 
             <Button Click="ChatButton_Click" Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="4" MaxHeight="130" MaxWidth="150" Background="Transparent" BorderBrush="Transparent">
                 <Image Source="https://www.damen.com/-/media/New-Corporate-Damen/Images/Services/Services_logo.png?la=ru-RU"></Image>

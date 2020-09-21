@@ -3,6 +3,7 @@ using AirMAY.Services;
 using AirMAY.Services.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace AirMAY
 {
-    /// <summary>
-    /// Логика взаимодействия для MainAviaWindow.xaml
-    /// </summary>
     public partial class MainAviaWindow : Window
     {
         private readonly FlightService _flightService;
@@ -77,44 +75,13 @@ namespace AirMAY
         }
         private async void AviaButton_Click(object sender, RoutedEventArgs e)
         {
-            var res = await _flightService.GetAllFlight();
-            List<Flight> flights = new List<Flight>();
-
-            foreach (var item in res)
-            {
-                foreach (var times in item.FlightTimes)
-                {
-                    flights.Add(new Flight()
-                    {
-                        Price = item.Price,
-                        FirstSity = item.FirstSity,
-                        SecondSity = item.SecondSity,
-                        FlightTimes = new List<FlightTime>() { times }
-                    });
-                }
-            }
-            mainListBox.ItemsSource = flights;
+            addButton.Visibility = Visibility.Visible;
+            mainListView.ItemsSource = await _flightService.GetAllFlight();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var res = await _flightService.GetAllFlight();
-            List<Flight> flights = new List<Flight>();
-
-            foreach (var item in res)
-            {
-                foreach (var times in item.FlightTimes)
-                {
-                    flights.Add(new Flight()
-                    {
-                        Price = item.Price,
-                        FirstSity = item.FirstSity,
-                        SecondSity = item.SecondSity,
-                        FlightTimes = new List<FlightTime>() { times }
-                    });
-                }
-            }
-            mainListBox.ItemsSource = flights;
+            mainListView.ItemsSource = await _flightService.GetAllFlight();
 
             _chatService.Start();
             if (_loginService.User.Login == "Admin")
@@ -126,7 +93,13 @@ namespace AirMAY
 
         private void HistoryClick(object sender, RoutedEventArgs e)
         {
+            addButton.Visibility = Visibility.Hidden;
+            var ress = _loginService.User.FlightUser;
+            List<Flight> flights = new List<Flight>();
+            foreach (var item in ress)
+                flights.Add(item.Flight);
 
+            mainListView.ItemsSource = flights;
         }
 
         private void ChatButton_Click(object sender, RoutedEventArgs e)
@@ -141,6 +114,18 @@ namespace AirMAY
             else ChatGrid.Visibility = Visibility.Hidden;
         }
 
-
+        private async void AddButtonClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (mainListView.SelectedItem != null)
+                {
+                    var res = (await _flightService.FindByConditionAsync(x => x.Id == (mainListView.SelectedItem as Flight).Id)).FirstOrDefault();
+                    res.FlightUser.Add(new FlightUser() { UserId = _loginService.User.Id, FlightId = res.Id });
+                    await _flightService.Change(res);
+                }
+            }
+            catch (Exception)  { MessageBox.Show("Такой билет уже куплен"); }
+        }
     }
 }

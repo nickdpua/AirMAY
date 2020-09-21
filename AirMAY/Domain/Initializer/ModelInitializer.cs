@@ -27,31 +27,29 @@ namespace AirMAY.Domain.Initializer
             // Add Flights
             context.Flights.Add(new Models.Flight()
             {
+                Price = 30,
                 FirstSityId = context.Cities.First(x => x.SityName == "Киев").Id,
                 SecondSityId = context.Cities.First(x => x.SityName == "Одесса").Id,
-                Price = 30,
-            });
-            context.SaveChanges();
-
-            //Add FlightTimes
-            context.FlightTimes.Add(new Models.FlightTime()
-            {
-                FlightId = context.Flights.First(x => x.FirstSity.SityName == "Киев" && x.SecondSity.SityName == "Одесса").Id,
-                TimeOfDispatch = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute,
-                14, 00, 00),
-                EstimatedArrivalTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute,
-                15, 00, 00),
-            });
-
-            context.FlightTimes.Add(new Models.FlightTime()
-            {
-                FlightId = context.Flights.First(x => x.FirstSity.SityName == "Киев" && x.SecondSity.SityName == "Одесса").Id,
                 TimeOfDispatch = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute,
                 18, 00, 00),
                 EstimatedArrivalTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute,
                 19, 00, 00),
+
+            });
+
+            context.Flights.Add(new Models.Flight()
+            {
+                Price = 30,
+                FirstSityId = context.Cities.First(x => x.SityName == "Киев").Id,
+                SecondSityId = context.Cities.First(x => x.SityName == "Одесса").Id,
+                TimeOfDispatch = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute,
+                14, 00, 00),
+                EstimatedArrivalTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute,
+                15, 00, 00),
+
             });
             context.SaveChanges();
+
 
             context.Users.Add(new Models.User() { Login = "Admin", Password = "12345", Name = "Serega", Surname = "Kurapatkov" });
             context.SaveChanges();
